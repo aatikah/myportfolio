@@ -19,6 +19,8 @@ source venv/bin/activate
 pip install --upgrade pip
 pip freeze > requirements.txt
 pip install -r requirements.txt
+pip install Django
+
 
 # Run migrations to apply any database changes
 python manage.py migrate
