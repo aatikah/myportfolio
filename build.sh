@@ -7,7 +7,7 @@ set -e
 echo "Starting build process..."
 
 # Navigate to the project directory (adjust this path as needed)
-cd /portfolio\myportfolio
+cd /portfolio/myportfolio
 
 # Set up a virtual environment (optional, if using virtual environments)
 # You might want to specify a version of Python if needed
