@@ -1,7 +1,14 @@
 pipeline{
     agent any 
    
-   
+   environment {
+        // Replace with your Docker registry and image details
+        REGISTRY = 'https://hub.docker.com'
+        REPOSITORY = 'portfolio'
+        IMAGE_NAME = 'django-app'
+        DOCKER_CREDENTIALS_ID = 'docker-credential'  // ID of the Docker credentials in Jenkins
+    }
+    
     stages{
         stage('Initialize'){
             steps{
@@ -11,11 +18,18 @@ pipeline{
             ''' 
             }
         }
-        stage('Build'){
-            steps{
-                sh 'sudo chmod +x /var/lib/jenkins/workspace/django-pipeline/build.sh'
-                sh 'sudo /var/lib/jenkins/workspace/django-pipeline/build.sh'
-                
+        stage('Checkout') {
+            steps {
+                // Checkout the source code from your repository
+                git url: 'https://github.com/aatikah/myportfolio.git', branch: 'main'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    docker.build("${REPOSITORY}/${IMAGE_NAME}:latest")
+                }
             }
         }
         
