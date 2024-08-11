@@ -27,6 +27,15 @@ pipeline{
                 }
             }
         }
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    docker.withRegistry("https://${REGISTRY}", "${DOCKER_CREDENTIALS_ID}") {
+                        dockerImage.push('latest')
+                    }
+                }
+            }
+        }
         
     }
 
