@@ -18,12 +18,7 @@ pipeline{
             ''' 
             }
         }
-        stage('Checkout') {
-            steps {
-                // Checkout the source code from your repository
-                git url: 'https://github.com/aatikah/myportfolio.git', branch: 'main'
-            }
-        }
+        
 
         stage('Build Docker Image') {
             steps {
