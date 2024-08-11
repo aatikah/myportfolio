@@ -17,6 +17,7 @@ source venv/bin/activate
 
 # Install the required dependencies
 pip install --upgrade pip
+pip freeze > requirements.txt
 pip install -r requirements.txt
 
 # Run migrations to apply any database changes
