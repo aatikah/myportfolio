@@ -11,6 +11,7 @@ echo "Starting build process..."
 
 # Set up a virtual environment (optional, if using virtual environments)
 # You might want to specify a version of Python if needed
+apt install python3.11-venv
 python3 -m venv venv
 source venv/bin/activate
 
