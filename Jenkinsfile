@@ -23,7 +23,7 @@ pipeline{
                 script {
                     // Authenticate Docker with GCP
                     sh 'echo ${GCP_SERVICE_ACCOUNT} > ~/gcp-service-account-key.json'
-                    sh 'gcloud auth activate-service-account --key-file=~/gcp-service-account-key.json'
+                    sh 'gcloud auth activate-service-account --key-file=~/jenkins-sa-key.json'
                     sh 'gcloud auth configure-docker'
                 }
             }
