@@ -37,6 +37,14 @@ pipeline{
                 }
             }
         }
+        stage('Push Docker Image to GCR') {
+            steps {
+                script {
+                    // Push the Docker image to Google Container Registry
+                    sh 'docker push gcr.io/${PROJECT_ID}/${IMAGE_NAME}:${IMAGE_TAG}'
+                }
+            }
+        }
 
 }
 }
