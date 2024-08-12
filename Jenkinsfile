@@ -7,6 +7,7 @@ pipeline{
         REPOSITORY = 'portfolio'
         IMAGE_NAME = 'django-app'
         DOCKER_CREDENTIALS_ID = 'docker-credential'  // ID of the Docker credentials in Jenkins
+        dockerImage = ''
     }
     
     stages{
