@@ -23,7 +23,7 @@ pipeline{
                 script {
                     // Create a service account key file in the workspace
                     def keyFile = "${env.WORKSPACE}/jenkins-sa-key.json"
-                    writeFile file: keyFile, text: GCP_SERVICE_ACCOUNT
+                    writeFile file: keyFile, text: credentials('gcp-service-account')
 
                     // Authenticate with GCP using the key file
                     sh "gcloud auth activate-service-account --key-file=${keyFile}"
