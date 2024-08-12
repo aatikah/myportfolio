@@ -47,4 +47,10 @@ pipeline{
         }
 
 }
+    post {
+        always {
+            // Clean up the service account key file
+            sh 'rm -f ${env.WORKSPACE}/jenkins-sa-key.json'
+        }
+    }
 }
