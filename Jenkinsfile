@@ -3,7 +3,7 @@ pipeline{
    
    environment {
         // Replace with your Docker registry and image details
-        REGISTRY = 'https://hub.docker.com/repository/docker/aatikah'
+        REGISTRY = 'hub.docker.com/'
         REPOSITORY = 'portfolio'
         IMAGE_NAME = 'django-app'
         DOCKER_CREDENTIALS_ID = 'docker-credential'  // ID of the Docker credentials in Jenkins
