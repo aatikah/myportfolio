@@ -29,6 +29,14 @@ pipeline{
 
         
     }
+         stage('Build Docker Image') {
+            steps {
+                script {
+                    // Build the Docker image
+                    sh 'docker build -t gcr.io/${PROJECT_ID}/${IMAGE_NAME}:${IMAGE_TAG} .'
+                }
+            }
+        }
 
 }
 }
