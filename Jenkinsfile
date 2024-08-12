@@ -21,9 +21,12 @@ pipeline{
       stage('Authenticate with GCP') {
             steps {
                 script {
-                    // Authenticate Docker with GCP
-                    sh 'echo ${GCP_SERVICE_ACCOUNT} > ~/gcp-service-account-key.json'
-                    sh 'gcloud auth activate-service-account --key-file=~/jenkins-sa-key.json'
+                    // Create a service account key file in the workspace
+                    def keyFile = "${env.WORKSPACE}/jenkins-sa-key.json"
+                    writeFile file: keyFile, text: GCP_SERVICE_ACCOUNT
+
+                    // Authenticate with GCP using the key file
+                    sh "gcloud auth activate-service-account --key-file=${keyFile}"
                     sh 'gcloud auth configure-docker'
                 }
             }
