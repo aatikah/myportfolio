@@ -24,7 +24,7 @@ pipeline{
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build("${REPOSITORY}/${IMAGE_NAME}:latest")
+                    dockerImage = docker.build("${REPOSITORY}/${IMAGE_NAME}:latest")
                 }
             }
         }
