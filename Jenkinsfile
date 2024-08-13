@@ -1,26 +1,23 @@
-pipeline{
+pipeline {
     agent any 
    
-   environment {
-        // Replace with your Docker registry and image details
-        REGISTRY = 'index.docker.io/v1/'
-        REPOSITORY = 'aatikah/portfolio'
-        IMAGE_NAME = 'django-app'
-       DOCKER_CREDENTIALS_ID = 'docker-credential'  // ID of the Docker credentials in Jenkins
-        
+    environment {
+        REGISTRY = 'https://index.docker.io/v1/'
+        REPOSITORY = 'aatikah'
+        IMAGE_NAME = 'portfolio-django-app'
+        DOCKER_CREDENTIALS_ID = 'docker-credential'
     }
     
-    stages{
-        stage('Initialize'){
-            steps{
+    stages {
+        stage('Initialize') {
+            steps {
                 sh '''
                     echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
-            ''' 
+                ''' 
             }
         }
         
-
         stage('Build Docker Image') {
             steps {
                 script {
@@ -28,17 +25,15 @@ pipeline{
                 }
             }
         }
+        
         stage('Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry("https://${REGISTRY}", "${DOCKER_CREDENTIALS_ID}") {
+                    docker.withRegistry("${REGISTRY}", DOCKER_CREDENTIALS_ID) {
                         dockerImage.push('latest')
                     }
                 }
             }
-            
         }
-        
     }
-
 }
