@@ -21,7 +21,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    dockerImage = docker.build("${REPOSITORY}/${IMAGE_NAME}:second")
+                    dockerImage = docker.build("${REPOSITORY}/${IMAGE_NAME}:v1")
                 }
             }
         }
