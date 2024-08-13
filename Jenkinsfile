@@ -4,7 +4,7 @@ pipeline {
     environment {
         REGISTRY = 'https://index.docker.io/v1/'
         REPOSITORY = 'aatikah'
-        IMAGE_NAME = 'portfolio-websites'
+        IMAGE_NAME = 'portfolio-website'
         DOCKER_CREDENTIALS_ID = 'docker-credential'
     }
     
