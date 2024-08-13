@@ -13,7 +13,7 @@ COPY . .
 
 
 # Set environment variables
-ENV DJANGO_SETTINGS_MODULE=myapp.settings
+ENV DJANGO_SETTINGS_MODULE=myportfolio.settings
 ENV DEBUG=False
 
 # Expose the port that the app runs on
