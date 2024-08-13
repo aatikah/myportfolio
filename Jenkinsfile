@@ -4,7 +4,7 @@ pipeline {
     environment {
         REGISTRY = 'https://index.docker.io/v1/'
         REPOSITORY = 'aatikah'
-        IMAGE_NAME = 'portfolio-django-apps'
+        IMAGE_NAME = 'portfolio-websites'
         DOCKER_CREDENTIALS_ID = 'docker-credential'
     }
     
@@ -21,7 +21,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    dockerImage = docker.build("${REPOSITORY}/${IMAGE_NAME}:v1")
+                    dockerImage = docker.build("${REPOSITORY}/${IMAGE_NAME}")
                 }
             }
         }
